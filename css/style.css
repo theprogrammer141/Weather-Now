@@ -1,0 +1,43 @@
+@import url(https://fonts.googleapis.com/css?family=DM+Sans:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+@import url(https://fonts.googleapis.com/css?family=Bricolage+Grotesque:200,300,regular,500,600,700,800);
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'DM Sans', sans-serif;
+    background-color: #03012dff;
+    color: #ffffffff;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+}
+
+.units-selector-wrapper{
+    padding: 0.7rem;
+    border-radius: 0.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+    background-color: #272541ff;
+}
+
+#unit-selector{
+    background-color: transparent;
+    color: #ffffffff;
+    border: none;
+    outline: none; 
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+}
