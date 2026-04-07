@@ -72,6 +72,12 @@ header{
     background-color: #272541ff;
     border-radius: 0.7rem;
     width: 400px;
+    border: none;
+    outline: none;
+}
+
+.search-place-container:focus-within{
+    border: 1px solid #ffffffff;
 }
 
 #search-bar{
@@ -79,8 +85,16 @@ header{
     color: #ffffffff;
     border: none;
     outline: none; 
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: 500;
+}
+
+#search-bar::placeholder{
+    color: #ffffffff;
+}
+
+#search-bar:focus::placeholder{
+    color: transparent;
 }
 
 #search-btn{
@@ -90,4 +104,10 @@ header{
     border-radius: 0.5rem;
     width: 100px;
     height: 45px;
+    border: none;
+}
+
+#search-btn:hover{
+    background-color: #2d1c9cff;
+    cursor: pointer;
 }
