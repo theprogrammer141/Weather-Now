@@ -8,7 +8,7 @@
 }
 
 body{
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Bricolage Grotesque', sans-serif;
     background-color: #03012dff;
     color: #ffffffff;
     max-width: 1440px;
@@ -40,4 +40,54 @@ header{
     font-size: 0.8rem;
     font-weight: 500;
     cursor: pointer;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-heading{
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+#search-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search-place-container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.7rem;
+    background-color: #272541ff;
+    border-radius: 0.7rem;
+    width: 400px;
+}
+
+#search-bar{
+    background-color: transparent;
+    color: #ffffffff;
+    border: none;
+    outline: none; 
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+#search-btn{
+    background-color: #4455daff;
+    color: #ffffffff;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    width: 100px;
+    height: 45px;
 }
