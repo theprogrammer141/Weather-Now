@@ -15,6 +15,7 @@ body{
     margin: 0 auto;
 }
 
+/* Header */
 header{
     display: flex;
     justify-content: space-between;
@@ -42,6 +43,7 @@ header{
     cursor: pointer;
 }
 
+/* Main */
 .main{
     display: flex;
     flex-direction: column;
@@ -61,6 +63,7 @@ header{
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    margin-bottom: 2.5rem;
 }
 
 .search-place-container{
@@ -111,3 +114,120 @@ header{
     background-color: #2d1c9cff;
     cursor: pointer;
 }
+
+/* Weather-Details Section*/
+.weather-details{
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    margin-left: 2rem;
+}
+
+.detail-cards-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 800px;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.detail-cards-grid .card{
+    background: #272541ff;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 1rem;
+    width: 182px;
+    height: 118px;
+}
+
+#daily-forecast-heading{
+    margin-bottom: 1.2rem;
+}
+
+.daily-forecast-cards-grid{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    max-width: 800px;
+    margin-bottom: 2rem;
+}
+
+.daily-forecast-cards-grid .card{
+    background: #272541ff;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 1rem;
+    width: 100.57px;
+    height: 165px;
+}
+
+.hourly-forecast-wrapper{
+    background: #272541ff;
+    height: 693px;
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.hourly-forecast-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+}
+
+#hourly-forecast-selector{
+    background-color: #3d3b5eff;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+}
+
+#hourly-forecast-selector:hover{
+    cursor: pointer;
+}
+
+
+.hourly-forecast-column{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0 1.5rem 1.5rem;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+
+    /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: #3d3b5eff transparent;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    .hourly-forecast-column::-webkit-scrollbar-track {
+        background: transparent;    
+    }
+
+    .hourly-forecast-column::-webkit-scrollbar-thumb {
+        background-color: #3d3b5eff;
+        border-radius: 3px;
+    }
+}
+
+.hourly-forecast-column .card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.2rem;
+    background-color: #3d3b5eff;
+    border-radius: 0.5rem;
+    margin-bottom: 0.2rem;
+}
+

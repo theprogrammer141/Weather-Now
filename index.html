@@ -39,8 +39,85 @@
         </div>
         <button type="button" name="search-btn" class="search-btn" id="search-btn" aria-label="Search-Button">Search</button>
       </form>
-   
     </main>
+
+    <!-- Weather Details -->
+    <section class="weather-details" id="weather-details" aria-label="Weather-Details">
+      <!-- Left Column -->
+      <div class="weather-details__left"  id="weather-details__left" aria-label="Weather-Details-Left-Column">
+        <!-- Current Weather Image -->
+        <div class="current-weather" id="current-weather"   aria-label="current-weather">
+          <img src="./assets/images/bg-today-large.svg" alt="Current Weather Image" class="current-weather-image" id="current-weather-image" aria-label="current-weather-image" />
+        </div>
+        <!-- Detail Cards grid -->
+        <div class="detail-cards-grid" id="detail-cards-grid" aria-label="Detail-Cards-Grid">
+          <div class="card" aria-label="Card">Feels like</div>
+          <div class="card" aria-label="Card">Humidity</div>
+          <div class="card" aria-label="Card">Wind</div>
+          <div class="card" aria-label="Card">Precipitation</div>
+        </div>
+        <!-- Daily forecast -->
+        <h4 class="daily-forecast-heading" id="daily-forecast-heading" aria-label="daily-forecast-heading">Daily Forecast</h4>
+        <!-- Daily forecast cards grid -->
+        <div class="daily-forecast-cards-grid" id="daily-forecast-cards-grid" aria-label="Daily-Forecast-Cards-Grid">
+          <div class="card" aria-label="Card">Mon</div>
+          <div class="card" aria-label="Card">Tue</div>
+          <div class="card" aria-label="Card">Wed</div>
+          <div class="card" aria-label="Card">Thu</div>
+          <div class="card" aria-label="Card">Fri</div>
+          <div class="card" aria-label="Card">Sat</div>
+          <div class="card" aria-label="Card">Sun</div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="weather-details__right" id="weather-details__right" aria-label="Weather-Details-Right-Column">
+        <!-- Hourly forecast wrapper -->
+        <div class="hourly-forecast-wrapper" id="hourly-forecast-wrapper" aria-label="Hourly-Forecast-Wrapper">
+          <!-- Hourly forecast header -->
+          <div class="hourly-forecast-header" id="hourly-forecast-header">
+            <h4 class="hourly-forecast-heading" id="hourly-forecast-heading">Hourly Forecast</h4>
+            <select name="hourly-forecast" id="hourly-forecast-selector" class="hourly-forecast-selector" aria-label="Hourly-Forecast-Selector">
+              <option value="Monday" aria-label="Monday" selected>Monday</option>
+              <option value="Tuesday" aria-label="Tuesday" >Tuesday</option>
+              <option value="Wednesday" aria-label="Wednesday" >Wednesday</option>
+              <option value="Thursday" aria-label="Thursday" >Thursday</option>
+              <option value="Friday" aria-label="Friday" >Friday</option>
+              <option value="Saturday" aria-label="Saturday"  >Saturday</option>
+              <option value="Sunday" aria-label="Sunday" >Sunday</option>
+            </select>
+          </div>
+          <!-- Hourly forecast column -->
+          <div class="hourly-forecast-column" id="hourly-forecast-column" aria-label="Hourly-Forecast-Column">
+            <div class="card" aria-label="Card">12 AM</div>
+            <div class="card" aria-label="Card">1 AM</div>
+            <div class="card" aria-label="Card">2 AM</div>
+            <div class="card" aria-label="Card">3 AM</div>
+            <div class="card" aria-label="Card">4 AM</div>
+            <div class="card" aria-label="Card">3 PM</div>
+            <div class="card" aria-label="Card">5 AM</div>
+            <div class="card" aria-label="Card">6 AM</div>
+            <div class="card" aria-label="Card">7 AM</div>
+            <div class="card" aria-label="Card">8 AM</div>
+            <div class="card" aria-label="Card">9 AM</div>
+            <div class="card" aria-label="Card">10 AM</div>
+            <div class="card" aria-label="Card">11 AM</div>
+            <div class="card" aria-label="Card">12 PM</div>
+            <div class="card" aria-label="Card">1 PM</div>
+            <div class="card" aria-label="Card">2 PM</div>
+            <div class="card" aria-label="Card">3 PM</div>
+            <div class="card" aria-label="Card">4 PM</div>
+            <div class="card" aria-label="Card">5 PM</div>
+            <div class="card" aria-label="Card">6 PM</div>
+            <div class="card" aria-label="Card">7 PM</div>
+            <div class="card" aria-label="Card">8 PM</div>
+            <div class="card" aria-label="Card">9 PM</div>
+            <div class="card" aria-label="Card">10 PM</div>
+            <div class="card" aria-label="Card">11 PM</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
   <!-- Units
 
