@@ -23,25 +23,69 @@ header{
     padding: 2rem;
 }
 
-.units-selector-wrapper{
-    padding: 0.7rem;
-    border-radius: 0.3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.2rem;
-    background-color: #272541ff;
+.custom-select{
+    position: relative;
 }
 
-#unit-selector{
-    background-color: transparent;
-    color: #ffffffff;
+.custom-select__trigger{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #272541ff;
+    color: #fff;
     border: none;
-    outline: none; 
-    font-size: 0.8rem;
-    font-weight: 500;
+    padding: 0.6rem;
+    border-radius: 0.4rem;
     cursor: pointer;
 }
+
+.custom-select__options{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 214px;
+    list-style: none;
+    background-color: #272541ff;
+    border-radius: 0.5rem;
+    margin-top: 0.25rem;
+    z-index: 10;
+}
+
+.custom-select.open .custom-select__options{
+    display: block;
+}
+
+.custom-select__option{
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+}
+
+#units-select .custom-select__option:first-child{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+#units-select .custom-select__option:nth-child(4){
+    border-bottom: 1px solid #3d3b5eff;
+    margin-bottom: 0.5rem;
+}
+
+#units-select .custom-select__option:nth-child(8){
+    border-bottom: 1px solid #3d3b5eff;
+    margin-bottom: 0.5rem;
+}
+
+.custom-select__option:hover{
+    background-color: #3d3b5eff;
+}
+
+.custom-select-heading{
+    font-size: 15px;
+    color: #aeaeb7ff;
+    margin-left: 1rem;
+}
+
 
 /* Main */
 .main{
@@ -180,17 +224,8 @@ header{
     padding: 1.5rem;
 }
 
-#hourly-forecast-selector{
+#days-select .custom-select__trigger{
     background-color: #3d3b5eff;
-    border: none;
-    outline: none;
-    color: white;
-    padding: 0.5rem;
-    border-radius: 0.3rem;
-}
-
-#hourly-forecast-selector:hover{
-    cursor: pointer;
 }
 
 

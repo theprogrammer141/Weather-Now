@@ -15,14 +15,27 @@
    <header>
     <img src="./assets/images/logo.svg" alt="Logo" aria-label="Logo" id="logo" class="logo"/>
 
-    <div class="units-selector-wrapper">
-      <img src="./assets/images/icon-units.svg" alt="Units-Icon" aria-label="Units-Icon" id="units-icon" class="units-icon"/>
-      
-      <select name="units" id="unit-selector" class="unit-selector" aria-label="Unit-Selector">
-        <option value="" selected disabled hidden>Units</option>
-        <option value="metric" aria-label="Metric">Metric</option>
-        <option value="imperial" aria-label="Imperial">Imperial</option>
-      </select>
+    <div class="custom-select" id="units-select">
+      <button class="custom-select__trigger" aria-expanded="false" aria-haspopup="listbox">
+        <img src="./assets/images/icon-units.svg" alt="" aria-hidden="true" class="units-icon"/>
+        <span class="custom-select__value">Units</span>
+        <img src="./assets/images/icon-dropdown.svg" alt="" aria-hidden="true" class="custom-select__arrow"/>
+      </button>
+      <ul class="custom-select__options" role="listbox">
+        <li class="custom-select__option" role="option">Switch to Imperial</li>
+        <p class="custom-select-heading">Temperature
+          <li class="custom-select__option" role="option">Celsius (°C)</li>
+          <li class="custom-select__option" role="option">Fahrenheit (°F)</li>
+        </p>
+        <p class="custom-select-heading">Wind Speed
+          <li class="custom-select__option" role="option">km/h</li>
+          <li class="custom-select__option" role="option">mph</li>
+        </p>
+        <p class="custom-select-heading">Precipitation
+          <li class="custom-select__option" role="option">Millimeters (mm)</li>
+          <li class="custom-select__option" role="option">Inches (in)</li>
+        </p>  
+      </ul>
     </div>
    </header>
 
@@ -77,15 +90,21 @@
           <!-- Hourly forecast header -->
           <div class="hourly-forecast-header" id="hourly-forecast-header">
             <h4 class="hourly-forecast-heading" id="hourly-forecast-heading">Hourly Forecast</h4>
-            <select name="hourly-forecast" id="hourly-forecast-selector" class="hourly-forecast-selector" aria-label="Hourly-Forecast-Selector">
-              <option value="Monday" aria-label="Monday" selected>Monday</option>
-              <option value="Tuesday" aria-label="Tuesday" >Tuesday</option>
-              <option value="Wednesday" aria-label="Wednesday" >Wednesday</option>
-              <option value="Thursday" aria-label="Thursday" >Thursday</option>
-              <option value="Friday" aria-label="Friday" >Friday</option>
-              <option value="Saturday" aria-label="Saturday"  >Saturday</option>
-              <option value="Sunday" aria-label="Sunday" >Sunday</option>
-            </select>
+            <div class="custom-select" id="days-select">
+              <button class="custom-select__trigger" aria-expanded="false" aria-haspopup="listbox">
+                <span class="custom-select__value">Monday</span>
+                <img src="./assets/images/icon-dropdown.svg" alt="" aria-hidden="true" class="custom-select__arrow"/>
+              </button>
+              <ul class="custom-select__options" role="listbox">
+                <li class="custom-select__option" role="option">Monday</li>
+                <li class="custom-select__option" role="option">Tuesday</li>
+                <li class="custom-select__option" role="option">Wednesday</li>
+                <li class="custom-select__option" role="option">Thursday</li>
+                <li class="custom-select__option" role="option">Friday</li>
+                <li class="custom-select__option" role="option">Saturday</li>
+                <li class="custom-select__option" role="option">Sunday</li>
+              </ul>
+            </div>
           </div>
           <!-- Hourly forecast column -->
           <div class="hourly-forecast-column" id="hourly-forecast-column" aria-label="Hourly-Forecast-Column">
