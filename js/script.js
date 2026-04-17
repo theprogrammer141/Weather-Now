@@ -4,6 +4,14 @@ const customSelect = document.querySelectorAll('.custom-select');
 const customSelectTrigger = document.querySelectorAll('.custom-select__trigger');
 const searchBtn = document.querySelector('#search-btn');
 const cityInput = document.querySelector("#search-bar");
+const feelsLike = document.getElementById('feels-like-value');
+const humidity = document.getElementById('humidity-value');
+const windSpeed = document.getElementById('wind-speed-value');
+const precipitation = document.getElementById('precipitation-value');
+const currentWeatherCity = document.querySelector(".current-weather__city");
+const currentWeatherDate = document.querySelector('.current-weather__date');
+const currentWeatherIcon = document.querySelector('.current-weather__icon');
+const currentWeatherTemperature = document.querySelector(".current-weather__temp");
 
 customSelectTrigger.forEach(trigger => {
     trigger.addEventListener('click', function(e){
@@ -50,10 +58,48 @@ const fetchWeather = async function(cityName){
     
         const weatherData = await weatherResponse.json();
     
+        renderWeather(geoData, weatherData);
         console.log(weatherData);
+        console.log(geoData);
     }catch(error){
         console.log(error);
         alert('City not found');
     }
 }
 
+const renderWeather = function(geoData, weatherData){
+    currentWeatherCity.textContent = geoData.results[0].name + ", " + geoData.results[0].country;
+    
+    const date = new Date(weatherData.current.time).toLocaleDateString('en-US', {
+        weekday: 'long',
+        year:'numeric',
+        month: "short",
+        day: "numeric",
+    })
+
+    currentWeatherDate.textContent = date;
+
+    currentWeatherIcon.src = getWeather(weatherData.current.weather_code);
+
+    currentWeatherTemperature.textContent = weatherData.current.apparent_temperature + weatherData.current_units.apparent_temperature;
+
+    feelsLike.textContent = weatherData.current.temperature_2m + weatherData.current_units.temperature_2m;
+    
+    humidity.textContent = weatherData.current.relative_humidity_2m + weatherData.current_units.relative_humidity_2m;
+
+    windSpeed.textContent = weatherData.current.wind_speed_10m + weatherData.current_units.wind_speed_10m;
+
+    precipitation.textContent = weatherData.current.precipitation + weatherData.current_units.precipitation;
+}
+
+const getWeather = function(code){
+    if(code <= 0) return '/assets/images/icon-sunny.webp';
+    if(code <= 3) return '/assets/images/icon-partly-cloudy.webp';
+    if(code <= 48) return '/assets/images/icon-fog.webp';
+    if(code <= 55) return '/assets/images/icon-drizzle.webp';
+    if(code <= 65) return '/assets/images/icon-rain.webp';
+    if(code <= 77) return '/assets/images/icon-snow.webp';
+    if(code <= 82) return '/assets/images/icon-rain.webp'
+    if(code <= 86) return '/assets/images/icon-snow.webp';
+    if(code <= 99) return '/assets/images/icon-storm.webp';
+}

@@ -61,25 +61,37 @@
         <!-- Current Weather Image -->
         <div class="current-weather" id="current-weather"   aria-label="current-weather">
           <img src="./assets/images/bg-today-large.svg" alt="Current Weather Image" class="current-weather-image" id="current-weather-image" aria-label="current-weather-image" />
+          <div class="current-weather__info" id="current-weather__info" aria-label="Current-Weather-Info">
+            <h2 class="current-weather__city" id="city-name"></h2>
+            <p class="current-weather__date" id="current-date"></p>
+          </div>
+          <div class="current-weather__temp-wrapper">
+            <img src="" alt="Weather Icon" class="current-weather__icon" id="weather-icon" />
+            <p class="current-weather__temp" id="current-temp"></p>
+          </div>
         </div>
         <!-- Detail Cards grid -->
         <div class="detail-cards-grid" id="detail-cards-grid" aria-label="Detail-Cards-Grid">
-          <div class="card" aria-label="Card">Feels like</div>
-          <div class="card" aria-label="Card">Humidity</div>
-          <div class="card" aria-label="Card">Wind</div>
-          <div class="card" aria-label="Card">Precipitation</div>
+          <div class="card" aria-label="Card">
+            <span class="card__label">Feels Like</span>
+            <span class="card__value" id="feels-like-value">--°</span>
+          </div>
+          <div class="card" aria-label="Card">
+            <span class="card__label">Humidity</span>
+            <span class="card__value" id="humidity-value">--%</span>
+          </div>
+          <div class="card" aria-label="Card">
+            <span class="card__label">Wind Speed</span>
+            <span class="card__value" id="wind-speed-value">-- km/h</span>
+          </div>
+          <div class="card" aria-label="Card"><span class="card__label">Precipitation</span>
+            <span class="card__value" id="precipitation-value">- mm</span>
+          </div>
         </div>
         <!-- Daily forecast -->
         <h4 class="daily-forecast-heading" id="daily-forecast-heading" aria-label="daily-forecast-heading">Daily Forecast</h4>
         <!-- Daily forecast cards grid -->
         <div class="daily-forecast-cards-grid" id="daily-forecast-cards-grid" aria-label="Daily-Forecast-Cards-Grid">
-          <div class="card" aria-label="Card">Mon</div>
-          <div class="card" aria-label="Card">Tue</div>
-          <div class="card" aria-label="Card">Wed</div>
-          <div class="card" aria-label="Card">Thu</div>
-          <div class="card" aria-label="Card">Fri</div>
-          <div class="card" aria-label="Card">Sat</div>
-          <div class="card" aria-label="Card">Sun</div>
         </div>
       </div>
 
@@ -108,31 +120,6 @@
           </div>
           <!-- Hourly forecast column -->
           <div class="hourly-forecast-column" id="hourly-forecast-column" aria-label="Hourly-Forecast-Column">
-            <div class="card" aria-label="Card">12 AM</div>
-            <div class="card" aria-label="Card">1 AM</div>
-            <div class="card" aria-label="Card">2 AM</div>
-            <div class="card" aria-label="Card">3 AM</div>
-            <div class="card" aria-label="Card">4 AM</div>
-            <div class="card" aria-label="Card">3 PM</div>
-            <div class="card" aria-label="Card">5 AM</div>
-            <div class="card" aria-label="Card">6 AM</div>
-            <div class="card" aria-label="Card">7 AM</div>
-            <div class="card" aria-label="Card">8 AM</div>
-            <div class="card" aria-label="Card">9 AM</div>
-            <div class="card" aria-label="Card">10 AM</div>
-            <div class="card" aria-label="Card">11 AM</div>
-            <div class="card" aria-label="Card">12 PM</div>
-            <div class="card" aria-label="Card">1 PM</div>
-            <div class="card" aria-label="Card">2 PM</div>
-            <div class="card" aria-label="Card">3 PM</div>
-            <div class="card" aria-label="Card">4 PM</div>
-            <div class="card" aria-label="Card">5 PM</div>
-            <div class="card" aria-label="Card">6 PM</div>
-            <div class="card" aria-label="Card">7 PM</div>
-            <div class="card" aria-label="Card">8 PM</div>
-            <div class="card" aria-label="Card">9 PM</div>
-            <div class="card" aria-label="Card">10 PM</div>
-            <div class="card" aria-label="Card">11 PM</div>
           </div>
         </div>
       </div>

@@ -144,6 +144,15 @@ header{
     color: transparent;
 }
 
+#search-bar:-webkit-autofill,
+#search-bar:-webkit-autofill:hover,
+#search-bar:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px #272541ff inset;
+    -webkit-text-fill-color: #ffffffff;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+
 #search-btn{
     background-color: #4455daff;
     color: #ffffffff;
@@ -160,6 +169,51 @@ header{
 }
 
 /* Weather-Details Section*/
+/* Current Weather Card */
+/* Current Weather Card */
+.current-weather {
+    position: relative;
+    border-radius: 1.5rem;
+    overflow: hidden;
+}
+
+.current-weather-image {
+    display: block;
+}
+
+.current-weather__info {
+    position: absolute;
+    top: 50%;
+    left: 2.5rem;
+    transform: translateY(-50%);
+}
+
+.current-weather__city {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.current-weather__temp-wrapper {
+    position: absolute;
+    top: 50%;
+    right: 15rem;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.current-weather__icon {
+    width:88px;
+    height: 88px;
+}
+
+.current-weather__temp {
+    font-size: 4.5rem;
+    font-weight: 700;
+    font-family: 'DM Sans', sans-serif;
+}
+
 .weather-details{
     display: grid;
     grid-template-columns: 7fr 3fr;
@@ -179,11 +233,17 @@ header{
     background: #272541ff;
     border-radius: 1rem;
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: flex-start;
     padding: 1rem;
     width: 182px;
     height: 118px;
+}
+
+.detail-cards-grid .card .card__value{
+    font-size: 32px;
+    color: #ffffffff;
 }
 
 #daily-forecast-heading{
