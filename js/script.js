@@ -12,6 +12,8 @@ const currentWeatherCity = document.querySelector(".current-weather__city");
 const currentWeatherDate = document.querySelector('.current-weather__date');
 const currentWeatherIcon = document.querySelector('.current-weather__icon');
 const currentWeatherTemperature = document.querySelector(".current-weather__temp");
+const dailyForecastGrid = document.querySelector(".daily-forecast-cards-grid");
+const hourlyForecastColumn = document.querySelector(".hourly-forecast-column");
 
 customSelectTrigger.forEach(trigger => {
     trigger.addEventListener('click', function(e){
@@ -52,7 +54,7 @@ const fetchWeather = async function(cityName){
             throw new Error("City Not Found!");
         }
 
-        const {latitude, longitude, name, country} = geoData.results[0];
+        const {latitude, longitude} = geoData.results[0];
 
         const weatherResponse = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,wind_speed_10m,weather_code&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto&forecast_days=7`);
     
@@ -90,6 +92,24 @@ const renderWeather = function(geoData, weatherData){
     windSpeed.textContent = weatherData.current.wind_speed_10m + weatherData.current_units.wind_speed_10m;
 
     precipitation.textContent = weatherData.current.precipitation + weatherData.current_units.precipitation;
+
+    for(let i = 0; i < weatherData.daily.time.length; i++){
+        const dayName = new Date(weatherData.daily.time[i]).toLocaleDateString('en-US', {weekday: 'short'});
+        
+        const weatherIcon = getWeather(weatherData.daily.weather_code[i]);
+
+        const max_temp = Math.round(weatherData.daily.temperature_2m_max[i]) + "°";
+        const min_temp = Math.round(weatherData.daily.temperature_2m_min[i]) + "°";
+
+        const dailyForecastCard = `<div class="card">
+                                <p class="dayName" id="dayName">${dayName}</p>
+                                <img src="${weatherIcon}" alt="" class="daily-weather-icon" aria-label="Daily-Weather-Icon"/>
+                                <span id="max-temp">${max_temp}</span>
+                                <span id="min-temp">${min_temp}</span>
+                                </div>`;
+
+        dailyForecastGrid.insertAdjacentHTML('beforeend', dailyForecastCard);
+    }
 }
 
 const getWeather = function(code){

@@ -134,6 +134,7 @@ header{
     outline: none; 
     font-size: 1rem;
     font-weight: 500;
+    caret-color: #fff;
 }
 
 #search-bar::placeholder{
@@ -260,12 +261,24 @@ header{
 .daily-forecast-cards-grid .card{
     background: #272541ff;
     border-radius: 1rem;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-content: space-between;
+    text-align: center;
+    padding: 0.5rem;
     width: 100.57px;
     height: 165px;
+}
+
+.daily-forecast-cards-grid .card .dayName{
+    grid-column: 1 / -1;
+}
+
+.daily-forecast-cards-grid .card .daily-weather-icon {
+    grid-column: 1 / -1;
+    width: 48px;
+    height: 48px;
 }
 
 .hourly-forecast-wrapper{
