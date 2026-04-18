@@ -339,3 +339,36 @@ header{
     margin-bottom: 0.2rem;
 }
 
+.hourly-forecast-column .card .hourly-weather-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.hourly-forecast-column .card .current-hour {
+    margin-left: 0.75rem;
+}
+
+.hourly-forecast-column .card .current-hour-temperature {
+    margin-left: auto;
+}
+
+.custom-select__option{
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.custom-select__option.selected::after{
+    content: "";
+    background-image: url('../assets/images/icon-checkmark.svg');
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background-size: contain;
+    margin-left: auto;
+}
+
+#units-select #switch-to-imperial.hidden, #switch-to-metric.hidden::after{
+    display: none;
+}
