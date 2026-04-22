@@ -24,6 +24,12 @@ const switchToKmh = document.getElementById('switch-to-kmh');
 const switchToMph = document.getElementById('switch-to-mph');
 const switchToMillimeters = document.getElementById('switch-to-mm');
 const switchToInches = document.getElementById('switch-to-in');
+const statusContainer = document.getElementById('status-container');
+const statusLoading = document.getElementById('status-loading');
+const statusNotFound = document.getElementById('status-not-found');
+const statusApiError = document.getElementById('status-api-error');
+const weatherDetails = document.getElementById('weather-details');
+const suggestionsList = document.getElementById('suggestions-list');
 
 //* Variables
 let currentWeatherData = null;
@@ -33,16 +39,20 @@ let currentUnits = {
     windSpeed: 'kmh',
     precipitation: 'mm'
 };
+let debounceTimer = null;
 
 //* Functions
 const fetchWeather = async function(cityName){
+    showState('loading');
+
     try{
         const geoResponse = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${cityName}&count=10&language=en&format=json`);
     
         const geoData = await geoResponse.json();
 
         if(!geoData.results || geoData.results.length === 0){
-            throw new Error("City Not Found!");
+            showState('not-found');
+            return;
         }
 
         const {latitude, longitude, name, country} = geoData.results[0];
@@ -60,11 +70,12 @@ const fetchWeather = async function(cityName){
         currentWeatherData = weatherData;
     
         renderWeather(geoData, currentWeatherData);
+        showState('success');
         console.log(currentWeatherData);
         console.log(geoData);
     }catch(error){
         console.log(error);
-        alert('City not found');
+        showState('api-error');
     }
 }
 
@@ -185,6 +196,67 @@ const getWeather = function(code){
     if(code <= 99) return '/assets/images/icon-storm.webp';
 }
 
+const showState = function(state){
+    //Hide everything first
+    statusLoading.classList.add('hidden');
+    statusNotFound.classList.add('hidden');
+    statusApiError.classList.add('hidden');
+    weatherDetails.classList.add('hidden');
+    statusContainer.classList.add('hidden');
+
+    if (state === 'loading') {
+        statusContainer.classList.remove('hidden');
+        statusLoading.classList.remove('hidden');
+    } else if (state === 'not-found') {
+        statusContainer.classList.remove('hidden');
+        statusNotFound.classList.remove('hidden');
+    } else if (state === 'api-error') {
+        statusContainer.classList.remove('hidden');
+        statusApiError.classList.remove('hidden');
+    } else if (state === 'success') {
+        weatherDetails.classList.remove('hidden');
+    }
+}
+
+const fetchSuggestions = async function(query){
+    try{
+        const response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${query}&count=5&language=en&format=json`);
+
+        const data = await response.json();
+
+        if(!data.results){
+            suggestionsList.classList.add('hidden');
+            return;
+        }
+
+        renderSuggestions(data.results);
+    }catch(error){
+        suggestionsList.classList.add('hidden');
+    }
+};
+
+const renderSuggestions = function(results){
+    suggestionsList.innerHTML = '';
+
+    results.forEach(result => {
+        const li = `<li class="suggestions-list__item" data-name="${result.name}">
+                    <span>${result.name}</span>
+                    <span class="suggestions-list__item-country">${result.country}</span>
+                    </li>`;
+        suggestionsList.insertAdjacentHTML('beforeend', li);
+    });
+
+    suggestionsList.classList.remove('hidden');
+
+    suggestionsList.querySelectorAll('.suggestions-list__item').forEach(item => {
+        item.addEventListener('click', function(){
+            cityInput.value = this.dataset.name;
+            suggestionsList.classList.add('hidden');
+            fetchWeather(this.dataset.name);
+        });
+    });
+};
+
 //* Event Listeners
 customSelectTrigger.forEach(trigger => {
     trigger.addEventListener('click', function(e){
@@ -206,12 +278,10 @@ document.addEventListener('click', function(e){
     }
 });
 
-searchBtn.addEventListener('click', function(e){
+document.getElementById('search-form').addEventListener('submit', function(e){
     e.preventDefault();
     const city = cityInput.value.trim();
-
     if(!city) return;
-
     fetchWeather(city);
 });
 
@@ -255,4 +325,29 @@ unitsDropDown.addEventListener('click', function(e){
 
         fetchWeather(currentCity.name);
     }
-})
+});
+
+document.getElementById('retry-btn').addEventListener('click', function(){
+    if(currentCity) fetchWeather(currentCity.name);
+});
+
+cityInput.addEventListener('input', function(){
+    const query = this.value.trim();
+
+    clearTimeout(debounceTimer);
+
+    if(query.length < 2){
+        suggestionsList.classList.add('hidden');
+        return;
+    }
+
+    debounceTimer = setTimeout(() => {
+        fetchSuggestions(query)
+    }, 300);
+});
+
+document.addEventListener('click', function(e){
+    if(!e.target.closest('.search-form')){
+        suggestionsList.classList.add('hidden');
+    }
+});

@@ -47,20 +47,50 @@
      <!-- Search bar + button -->
       <form class="search-form" id="search-form" role="search">
         <div class="search-place-container" id="search-place-container" aria-label="Search-Bar-And-Button">
+          <ul class="suggestions-list hidden" id="suggestions-list" role="listbox"></ul>
           <img src="./assets/images/icon-search.svg" alt="search-icon" id="search-icon" aria-label="Search-Icon" />
           <input type="search-bar" name="search-bar" class="search-bar" id="search-bar" placeholder="Search for a place..." aria-label="Search-Bar"></input>
         </div>
-        <button type="button" name="search-btn" class="search-btn" id="search-btn" aria-label="Search-Button">Search</button>
+        <button type="submit" name="search-btn" class="search-btn" id="search-btn" aria-label="Search-Button">Search</button>
       </form>
     </main>
 
+    <!-- Status Messages -->
+    <div class="status-container" id="status-container">
+      <!-- Loading state -->
+      <div class="status-loading hidden" id="status-loading">
+        <img src="./assets/images/icon-loading.svg" alt="" class="loading-icon" />
+        <p>Search in progress...</p>
+      </div>
+
+      <!-- City not found -->
+      <div class="status-error hidden" id="status-not-found">
+        <img src="./assets/images/icon-error.svg" alt="" class="error-icon" />
+        <p class="status-error__title">City Not Found</p>
+      </div>
+
+      <!-- API error -->
+      <div class="status-error hidden" id="status-api-error">
+        <img src="./assets/images/icon-error.svg" alt="" class="error-icon" />
+        <p class="status-error__title">Something went wrong!</p>
+        <p class="status-error__message">We couldn't connect to the server (API Error). Please try again in a few seconds.</p>
+        <button class="retry-btn" id="retry-btn">
+          <img src="./assets/images/icon-retry.svg" alt="" /> Retry
+        </button>
+      </div>
+    </div>
+
+
     <!-- Weather Details -->
-    <section class="weather-details" id="weather-details" aria-label="Weather-Details">
+    <section class="weather-details hidden" id="weather-details" aria-label="Weather-Details">
       <!-- Left Column -->
       <div class="weather-details__left"  id="weather-details__left" aria-label="Weather-Details-Left-Column">
         <!-- Current Weather Image -->
         <div class="current-weather" id="current-weather"   aria-label="current-weather">
-          <img src="./assets/images/bg-today-large.svg" alt="Current Weather Image" class="current-weather-image" id="current-weather-image" aria-label="current-weather-image" />
+          <picture>
+            <source media="(max-width: 768px)" srcset="./assets/images/bg-today-small.svg" />
+            <img src="./assets/images/bg-today-large.svg" alt="" class="current-weather-image" />
+          </picture>
           <div class="current-weather__info" id="current-weather__info" aria-label="Current-Weather-Info">
             <h2 class="current-weather__city" id="city-name"></h2>
             <p class="current-weather__date" id="current-date"></p>
