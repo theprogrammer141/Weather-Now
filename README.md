@@ -24,8 +24,8 @@ Users can:
 
 ### Links
 
-- Solution URL: Not published yet
-- Live Site URL: Not deployed yet
+- Solution URL: (https://www.frontendmentor.io/solutions/responsive-weather-app-built-using-html-css-js-with-open-meteo-api-WQImMKOv40)
+- Live Site URL: (https://weather-now-101.netlify.app/)
 
 ## Features Implemented
 
