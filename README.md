@@ -20,7 +20,7 @@ Users can:
 
 ### Screenshot
 
-![Weather app preview](./ss.png)
+![Weather app preview](ss.png)
 
 ### Links
 
